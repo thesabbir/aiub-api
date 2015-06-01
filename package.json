@@ -1,0 +1,20 @@
+{
+  "name": "aiub-api",
+  "version": "1.0.0",
+  "description": "AIUB JSON API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "scrap": "node scrap"
+  },
+  "author": "Sabbir Ahmed",
+  "license": "GPLv3",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "cheerio": "^0.19.0",
+    "express": "^4.12.4",
+    "lodash": "^3.9.3",
+    "request-promise": "^0.4.2"
+  }
+}
