@@ -16,8 +16,8 @@ npm start
 ## API Endpoints
 
 * Notices (ARRAY):
-   * GET /notice `
-   * GET /notice/:page (:page = page number)
+   * GET /notices
+   * GET /notices/:page (:page = page number)
 
 
 ## Changelog
