@@ -5,5 +5,6 @@ var
 
 
 router.get('/', ctrl.index);
+router.get('/notices/:page*?', ctrl.notices);
 
 module.exports = router;

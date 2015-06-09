@@ -4,24 +4,30 @@ var
     notice_url = 'http://www.aiub.edu/category/notices';
 
 
-var getSome = function (url, selector) {
-    console.log("Scrapping...");
-
-    return request(url)
+var getnotice = function (page) {
+    console.log("Scrapping notice form page: ",page);
+    return request(notice_url + '?pageNo='+page )
         .then(function (body) {
-            console.log("Body Loaded!");
             return cheerio.load(body, {
-                normalizeWhitespace: true,
-                xmlMode: true
+                normalizeWhitespace: true
             });
         })
         .then(function ($) {
-            return $(selector);
+            var notices = [];
+
+            $('ul.event-list > li').map(function (index, li) {
+                notices.push(
+                    {
+                        title: $(this).find('h2.title').text(),
+                        description: $(this).find('p.desc').text(),
+                        link: notice_url + $(this).find('a.info-link').attr('href')
+                    });
+
+            });
+            return notices;
         })
         .catch(console.error);
 };
 
 
-getSome(notice_url, 'ul.event-list > li').then(function (eventsHtml) {
-    console.log(eventsHtml);
-});
+module.exports.notice = getnotice;
