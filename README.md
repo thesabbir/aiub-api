@@ -18,6 +18,7 @@ npm start
 * Notices (ARRAY):
    * GET /notices
    * GET /notices/:page (:page = page number)
+   * GET /notices/details/:link (:link = notice.link)
 
 
 ## Changelog
