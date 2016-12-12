@@ -6,9 +6,6 @@ const cheerioOptions = {
     normalizeWhitespace: true
 };
 
-export function getDate(html) {
-    return new Date(`${html.find('.day').text()} ${html.find('.month').text()} ${html.find('.year').text()}`);
-}
 
 export function getNotice(page=1) {
     console.log(`Scrapping notice form page: ${page}`);
@@ -19,7 +16,7 @@ export function getNotice(page=1) {
                 $('ul.event-list > li').map(function (index, li) {
                 const item = $(li);
                 result.push({
-                    date: getDate(item),
+                    date: new Date(`${item.find('.day').text()} ${item.find('.month').text()} ${item.find('.year').text()}`),
                     title: item.find('h2.title').text(),
                     description: item.find('p.desc').text(),
                     link: item.find('a.info-link').attr('href')
